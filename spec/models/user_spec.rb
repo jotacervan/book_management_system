@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'create user' do
     context 'with a valid record' do
-      let!(:valid_user){ User.create(name: 'Reader Boy', email: 'test@email.com.br', password: '123456', password_confirmation: '123456') }
+      let!(:valid_user){ create(:user) }
       it 'should create a user successfully' do
         expect(User.count).to eq 1
-        expect(valid_user.email).to eq 'test@email.com.br'
+        expect(valid_user.email).to eq 'reader_boy@email.com.br'
       end
       it 'should start with a balance of 50' do
         expect(valid_user.balance).to eq 50  
