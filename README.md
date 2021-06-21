@@ -1,24 +1,17 @@
-# README
+# Book Management API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Work in progress project
+Methodoloty used TDD
+TO-DO
+1. Finish implementation of book income.
+2. Discount the value of the loan from the user account.
+3. Implement the possibility to have more than 1 copy of each book.
+4. Enable user creation from the api.
+5. Enable book management from the api.
+6. Implement the interface.
 
-Things you may want to cover:
+The test suit of the application is available running:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rspec spec/
+```
