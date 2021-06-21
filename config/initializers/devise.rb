@@ -20,11 +20,22 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
 
+  config.secret_key = '63a75d323ddbf1f5dde9157e63aeae11542e0b6e288b7c279e68309bcc0f8a2943db06258806506c5f98dbd1cfeb3c35a7f36b3a81991c74e03075a548e61bb5'
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+
+  config.jwt do |jwt|
+    jwt.secret = '22639768c6ca37f4163db78591ced1a302df47b743b8e7735cdec082adc977b8d633d9992166aab1c60de53f977962e1697ffd8cf4d5ae87aa60ed26c598aa9c'
+    jwt.dispatch_requests = [
+        ['POST', %r{^/users/sign_in$}],
+        ['GET', %r{^/$}]
+    ]
+    jwt.request_formats = { user: [:json] }
+    jwt.expiration_time = 8.hours.to_i
+  end
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

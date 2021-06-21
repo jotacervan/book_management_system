@@ -8,13 +8,13 @@ RSpec.describe "Dashboards", type: :request do
         sign_in user 
       end
       it "returns http success" do
-        get "/dashboard/index"
+        get "/"
         expect(response).to have_http_status(:success)
       end
     end
     context 'without a logged user' do
       it "returns http redirec" do
-        get "/dashboard/index"
+        get "/"
         expect(response).to have_http_status(:redirect)
       end
     end

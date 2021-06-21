@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
+  describe 'validate' do
+    specify{ expect(Book.new()).to_not be_valid }
+    specify{ expect(Book.new(name: 'New Book')).to be_valid }
+    specify{ expect(Book.new(name: 'New Book', description: 'Some description', image_url: 'image_url')).to be_valid }
+  end
+  describe 'methods' do
+    let!(:transaction){ create(:transaction, start_date: 2.days.ago, end_date: 2.days.from_now) } 
+    it 'is_available?' do
+      book = transaction.book 
+      expect(book.is_available?).to be_falsy
+    end
+  end
   describe 'Create book' do
     it 'should create the book successfully' do
       Book.create(name: 'Test Book', description: 'Some description about the book', image_url: 'https://image_url')

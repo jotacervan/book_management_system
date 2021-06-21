@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
+  has_many :transactions
+  
   validates_presence_of :name
   validates_uniqueness_of :account_number
   
